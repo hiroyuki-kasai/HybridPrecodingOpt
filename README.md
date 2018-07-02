@@ -58,8 +58,7 @@ Folders and files
 ./demo.m                - Demonstration script. 
 ./comp_OFDM.m           - Simulation script for OFDM. 
 |proposed/              - Contains the files for the proposed algorithms.
-|AltMinAlg/             - Contains the files for the existing algorithms from the [brilliant project](https://github.com/yuxianghao/Alternating-minimization-algorithms-for-hybrid-precoding-in-millimeter-wave-MIMO-systems).
-|manopt/                - Contains Manopt project.
+|AltMinAlg/             - Contains the files for the existing algorithms.
 |cvx/                   - Folder for CVX project (Please downlod by yoursel!).
 </pre>  
 
@@ -78,14 +77,14 @@ Demo example for OFDM system
 
 Just execute `demo` for the first demonstration of this package. 
 
-<img src="http://www.kasailab.com/public/github/HybridPrecodingOpt/images/demo.png" width="500">
+<div align="center"><img src="http://www.kasailab.com/public/github/HybridPrecodingOpt/images/demo.png" width="500"></div>
 
 <br />
 
 More results for OFDM system
 ----------------------------
 
-<img src="http://www.kasailab.com/public/github/HybridPrecodingOpt/images/Comp_MOAltMin.png" width="900">
+<div align="center"><img src="http://www.kasailab.com/public/github/HybridPrecodingOpt/images/Comp_MOAltMin.png" width="900"></div>
 
 <img src="http://www.kasailab.com/public/github/HybridPrecodingOpt/images/OFDB_SNR.png" width="800">
 
@@ -96,7 +95,7 @@ More results for OFDM system
 
 Notes
 -------
-- Most of the codes of the package come from the [brilliant project](https://github.com/yuxianghao/Alternating-minimization-algorithms-for-hybrid-precoding-in-millimeter-wave-MIMO-systems).  
+- Most of the codes of the package come from the codes in [AltMinAlg](https://github.com/yuxianghao/Alternating-minimization-algorithms-for-hybrid-precoding-in-millimeter-wave-MIMO-systems).  
 - The project uses the MATLAB toolbox [Manopt](https://www.manopt.org/).
 - [CVX package](http://cvxr.com/cvx/) is required for the narrrowband simulations. Please download the packege from [here](http://cvxr.com/cvx/download/) into `cvx` folder. 
 
