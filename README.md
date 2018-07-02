@@ -84,11 +84,17 @@ Just execute `demo` for the first demonstration of this package.
 More results for OFDM system
 ----------------------------
 
+- Comparison with the MO-AltMin algorithm. 
+
 <div align="center"><img src="http://www.kasailab.com/public/github/HybridPrecodingOpt/images/Comp_MOAltMin.png" width="900"></div>
 
-<img src="http://www.kasailab.com/public/github/HybridPrecodingOpt/images/OFDB_SNR.png" width="800">
+- Spectral efficiency for SNRs. 
 
-<img src="http://www.kasailab.com/public/github/HybridPrecodingOpt/images/OFDM_NRF.png" width="800">
+<div align="center"><img src="http://www.kasailab.com/public/github/HybridPrecodingOpt/images/OFDB_SNR.png" width="800"></div>
+
+- Spectral efficiency and processing time under different number of data streams, and antennass in transmitter/receiver.
+
+<div align="center"><img src="http://www.kasailab.com/public/github/HybridPrecodingOpt/images/OFDM_NRF.png" width="800"></div>
 
 
 <br />
