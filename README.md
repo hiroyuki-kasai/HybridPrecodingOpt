@@ -114,7 +114,7 @@ More results for OFDM system
 
 <br />
 
-<div align="center"><img src="http://www.kasailab.com/public/github/HybridPrecodingOpt/images/OFDM_NRF_2.png" width="800"></div>
+<div align="center"><img src="http://www.kasailab.com/public/github/HybridPrecodingOpt/images/OFDM_NRF_2.png" width="810"></div>
 
 <br />
 <br />
