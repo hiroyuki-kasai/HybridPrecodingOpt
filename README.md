@@ -110,7 +110,11 @@ More results for OFDM system
 
 - Spectral efficiency and processing time under different number of data streams, and antennass in transmitter/receiver.
 
-<div align="center"><img src="http://www.kasailab.com/public/github/HybridPrecodingOpt/images/OFDM_NRF.png" width="800"></div>
+<div align="center"><img src="http://www.kasailab.com/public/github/HybridPrecodingOpt/images/OFDM_NRF_1.png" width="800"></div>
+
+<br />
+
+<div align="center"><img src="http://www.kasailab.com/public/github/HybridPrecodingOpt/images/OFDM_NRF_2.png" width="800"></div>
 
 <br />
 <br />
