@@ -17,7 +17,7 @@ The maximization of spectral efficiency approximately boils down to a minimizati
 This problem is further formulated as a matrix factorization problem of he fully digital precoder with a product of the digital baseband precoder matrix and the analog RF precoder (or beamforming) matrix. 
 The noteworthy point is that the phase shifters impose an additional element-wise unit modulus constraints on the analog RF precoder matrix. 
 
-This package provides the codes of the proposed optimization algorithms for hybrid precoding. This code includes existing state-of-the arts algorithm, too. Most of the codes of this package come from the [brilliant project](https://github.com/yuxianghao/Alternating-minimization-algorithms-for-hybrid-precoding-in-millimeter-wave-MIMO-systems).  
+This package provides the codes of the proposed optimization algorithms for hybrid precoding. This code includes existing state-of-the arts algorithms, too. Most of the codes of this package come from the [brilliant project](https://github.com/yuxianghao/Alternating-minimization-algorithms-for-hybrid-precoding-in-millimeter-wave-MIMO-systems).  
 
 
 <br />
@@ -100,17 +100,20 @@ More results for OFDM system
 <div align="center"><img src="http://www.kasailab.com/public/github/HybridPrecodingOpt/images/Comp_MOAltMin.png" width="900"></div>
 
 <br />
+<br />
 
 - Spectral efficiency for SNRs. 
 
 <div align="center"><img src="http://www.kasailab.com/public/github/HybridPrecodingOpt/images/OFDB_SNR.png" width="800"></div>
 
 <br />
+<br />
 
 - Spectral efficiency and processing time under different number of data streams, and antennass in transmitter/receiver.
 
 <div align="center"><img src="http://www.kasailab.com/public/github/HybridPrecodingOpt/images/OFDM_NRF.png" width="800"></div>
 
+<br />
 <br />
 
 Notes
