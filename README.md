@@ -60,7 +60,9 @@ Folders and files
 |proposed/              - Contains the files for the proposed algorithms.
 |AltMinAlg/             - Contains the files for the existing algorithms.
 |cvx/                   - Folder for CVX project (Please downlod by yoursel!).
-</pre>  
+</pre>
+
+<br />  
 
 First to do
 ----------------------------
@@ -79,7 +81,16 @@ Just execute `demo` for the first demonstration of this package.
 
 <div align="center"><img src="http://www.kasailab.com/public/github/HybridPrecodingOpt/images/demo.png" width="500"></div>
 
+
 <br />
+
+Simulation for narrow band system
+----------------------------
+
+Execute `channel_realization` in `AltMinAlg/datasets/` folder to generate datasets such as `Ns=3.mat'. The script outputs the datasete file in there. You can load this generated dataset file in the script. 
+
+<br />
+
 
 More results for OFDM system
 ----------------------------
@@ -88,14 +99,17 @@ More results for OFDM system
 
 <div align="center"><img src="http://www.kasailab.com/public/github/HybridPrecodingOpt/images/Comp_MOAltMin.png" width="900"></div>
 
+<br />
+
 - Spectral efficiency for SNRs. 
 
 <div align="center"><img src="http://www.kasailab.com/public/github/HybridPrecodingOpt/images/OFDB_SNR.png" width="800"></div>
 
+<br />
+
 - Spectral efficiency and processing time under different number of data streams, and antennass in transmitter/receiver.
 
 <div align="center"><img src="http://www.kasailab.com/public/github/HybridPrecodingOpt/images/OFDM_NRF.png" width="800"></div>
-
 
 <br />
 
