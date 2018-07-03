@@ -10,18 +10,17 @@ close all;
 
 
 %% set parameters
-measure_snr_flag = false;
-realization = 1000;
+measure_snr_flag = true;
+realization = 100;
 
-algorithms = {'Optimal', 'OMP', 'PE-AltMin', 'Proposed'};
+algorithms = { 'Optimal', 'OMP', 'PE-AltMin', 'FPS-AltMin', 'Proposed'};
 alg_num = length(algorithms);
 
 
-L = 128;    % # of multi-carriers
-Nt = 144;   % # of transmit antennas
-Nr = 36;    % # of receive antennas
-%Nt = 16*16; % # of transmit antennas
-%Nr = 8*8;   % # of receive antennas
+%Nt = 144;   % # of transmit antennas
+%Nr = 36;    % # of receive antennas
+Nt = 16*16; % # of transmit antennas
+Nr = 8*8;   % # of receive antennas
 
 Nc = 5;     % # of clusters
 Nray = 10;  % # of rays in each cluster
@@ -34,7 +33,9 @@ sigma = 1; %according to the normalization condition of the H
 
 if measure_snr_flag
     Ns = 4; 
-    NRF_array = 6;    
+    NRF_array = 6;   
+    %Ns = 8; 
+    %NRF_array = 12;       
     SNR_dB = -15:5:10;
 else
     Ns = 6;     
@@ -57,7 +58,6 @@ params.angle_sigma = angle_sigma;
 params.gamma = gamma;    
 params.sigma = sigma;    
 params.realization = realization;       
-params.L = L;  
 
 
 %% assign and initialize cells
@@ -72,11 +72,16 @@ for j=1:alg_num
     end
 end
 
+c = 1/sqrt(Nc)*exp(1i*[0:2*pi/Nc:2*pi-2*pi/Nc])';
+
+
 
 %% perform algorithms
 for nrf_idx = 1:length(NRF_array)
     NRF = NRF_array(nrf_idx);
     params.NRF = NRF;
+    
+    C = kron(eye(NRF),c);    
     
     fprintf('##################### NRF = %d ##################### \n', NRF);
     
@@ -87,7 +92,7 @@ for nrf_idx = 1:length(NRF_array)
         
         
         %% generate matrices for OFDM
-        [Fopt, Wopt, H, At, Ar, FRF_enc, FRF_dec] = generate_OFDM_matrices(params);
+        [Fopt, Wopt, H, At, Ar, FRF_enc, FRF_dec] = generate_NB_matrices(params);
             
         
         %% perform actual algorithms
@@ -105,36 +110,46 @@ for nrf_idx = 1:length(NRF_array)
 
                 case 'MO-AltMin'
 
-                    [FRFM, FBBM, info_cell{alg_idx,reali}] = MO_AltMin_OFDM_HK(Fopt, NRF, FRF_enc);
-                    for l = 1:L
-                        FBBM(:,:,l) = sqrt(Ns) * FBBM(:,:,l) / norm(FRFM * FBBM(:,:,l),'fro');
-                    end
-                    [WRFM, WBBM, ~] = MO_AltMin_OFDM_HK( Wopt, NRF, FRF_dec );
+                    [FRFM, FBBM, info_cell{alg_idx,reali}] = MO_AltMin_NB_HK(Fopt, NRF, FRF_enc);
+
+                    FBBM = sqrt(Ns) * FBBM / norm(FRFM * FBBM, 'fro');
+
+                    [WRFM, WBBM, ~] = MO_AltMin_NB_HK( Wopt, NRF, FRF_dec );
 
                 case 'Proposed'   
 
-                    [FRFM, FBBM, info_cell{alg_idx,reali} ] = fast_hybrid_precoding_OFDM_wrapper(Fopt, NRF, FRF_enc);
-                    for l = 1:L
-                        FBBM(:,:,l) = sqrt(Ns) * FBBM(:,:,l) / norm(FRFM * FBBM(:,:,l),'fro');
-                    end
-                    [WRFM, WBBM, ~] = fast_hybrid_precoding_OFDM_wrapper(Wopt, NRF, FRF_dec);
+                    %options_pro.solver = 'tr';
+                    options_pro.func_tolerance = 1e-2;
+                    
+                    [FRFM, FBBM, info_cell{alg_idx,reali} ] = fast_hybrid_precoding_NB_wrapper( Fopt, NRF, FRF_enc, options_pro);
+
+                    FBBM = sqrt(Ns) * FBBM / norm(FRFM * FBBM, 'fro');
+
+                    [WRFM, WBBM, ~] = fast_hybrid_precoding_NB_wrapper( Wopt, NRF, FRF_dec, options_pro);
 
                 case 'PE-AltMin'  
 
-                    [FRF, FBB, info_cell{alg_idx,reali}] = PE_AltMin_OFDM_HK(Fopt, NRF, FRF_enc);
-                    for l = 1:L
-                        FBB(:,:,l) = sqrt(Ns) * FBB(:,:,l) / norm(FRF * FBB(:,:,l),'fro');
-                    end
-                    [WRF, WBB, ~] = PE_AltMin_OFDM_HK( Wopt, NRF, FRF_dec ); 
+                    [FRF, FBB, info_cell{alg_idx,reali}] = PE_AltMin_NB_HK(Fopt, NRF, FRF_enc);
+
+                    FBB = sqrt(Ns) * FBB / norm(FRF * FBB, 'fro');
+
+                    [WRF, WBB, ~] = PE_AltMin_NB_HK( Wopt, NRF, FRF_dec ); 
 
                 case 'OMP'
 
-                    [FRFO, FBBO, info_cell{alg_idx,reali}] = OMP_OFDM_HK(Fopt, NRF, At);
-                    for l = 1:L
-                        FBBO{l} = sqrt(Ns) * FBBO{l} / norm(FRFO * FBBO{l},'fro');
-                    end
-                    [WRFO, WBBO, ~] = OMP_OFDM_HK(Wopt, NRF, Ar);                
+                    [FRFO, FBBO, info_cell{alg_idx,reali}] = OMP_NB_HK(Fopt, NRF, At);
 
+                    FBBO = sqrt(Ns) * FBBO / norm(FRFO * FBBO, 'fro');
+
+                    [WRFO, WBBO, ~] = OMP_NB_HK(Wopt, NRF, Ar); 
+                    
+                case 'FPS-AltMin'
+                    
+                    [FRF, FBB] = my_AltMin_new_HK(Fopt, C);
+                    
+                    FBB = sqrt(Ns) * FBB / norm(FRF * FBB, 'fro');
+                    
+                    [WRF, WBB] = my_AltMin_new_HK(Wopt, C);                    
             end
             
             elapsed_time = toc(start_time);
@@ -142,19 +157,20 @@ for nrf_idx = 1:length(NRF_array)
 
  
             %% Calculate spectral efficiency
-            for l = 1:L
-                for s = 1:snr_num
-                    if strcmp(alg_name, 'MO-AltMin') || strcmp(alg_name, 'Proposed')
-                        RM(alg_idx,s,reali) = RM(alg_idx,s,reali) + log2(det(eye(Ns) + SNR(s)/Ns * pinv(WRFM * WBBM(:,:,l)) * H(:,:,l) * FRFM * FBBM(:,:,l) * FBBM(:,:,l)' * FRFM' * H(:,:,l)' * WRFM * WBBM(:,:,l)))/L;
-                    elseif strcmp(alg_name, 'PE-AltMin') 
-                        RM(alg_idx,s,reali) = RM(alg_idx,s,reali) + log2(det(eye(Ns) + SNR(s)/Ns * pinv(WRF * WBB(:,:,l)) * H(:,:,l) * FRF * FBB(:,:,l) * FBB(:,:,l)' * FRF' * H(:,:,l)' * WRF * WBB(:,:,l)))/L;
-                    elseif strcmp(alg_name, 'OMP')
-                        RM(alg_idx,s,reali) = RM(alg_idx,s,reali) + log2(det(eye(Ns) + SNR(s)/Ns * pinv(WRFO * WBBO{l}) * H(:,:,l) * FRFO * FBBO{l} * FBBO{l}' * FRFO' * H(:,:,l)' * WRFO * WBBO{l}))/L;
-                    elseif strcmp(alg_name, 'Optimal')
-                        RM(alg_idx,s,reali) = RM(alg_idx,s,reali) + log2(det(eye(Ns) + SNR(s)/Ns * pinv(Wopt(:,:,l)) * H(:,:,l) * Fopt(:,:,l) * Fopt(:,:,l)' * H(:,:,l)' * Wopt(:,:,l)))/L;                
-                    end
+            for s = 1:snr_num
+                if strcmp(alg_name, 'MO-AltMin') || strcmp(alg_name, 'Proposed')
+                    RM(alg_idx,s,reali) = RM(alg_idx,s,reali) + log2(det(eye(Ns) + SNR(s)/Ns * pinv(WRFM * WBBM) * H * FRFM * (FBBM * FBBM') * FRFM' * H' * WRFM * WBBM));
+                elseif strcmp(alg_name, 'PE-AltMin') 
+                    RM(alg_idx,s,reali) = RM(alg_idx,s,reali) + log2(det(eye(Ns) + SNR(s)/Ns * pinv(WRF * WBB) * H * FRF * (FBB * FBB') * FRF' * H' * WRF * WBB));
+                elseif strcmp(alg_name, 'OMP')
+                    RM(alg_idx,s,reali) = RM(alg_idx,s,reali) + log2(det(eye(Ns) + SNR(s)/Ns * pinv(WRFO * WBBO) * H * FRFO * (FBBO * FBBO') * FRFO' * H' * WRFO * WBBO));
+                elseif strcmp(alg_name, 'FPS-AltMin')
+                    RM(alg_idx,s,reali) = RM(alg_idx,s,reali) + log2(det(eye(Ns) + SNR(s)/Ns * pinv(WRF*WBB) * H * FRF * (FBB * FBB') * FRF' * H' * WRF*WBB));                    
+                elseif strcmp(alg_name, 'Optimal')
+                    RM(alg_idx,s,reali) = RM(alg_idx,s,reali) + log2(det(eye(Ns) + SNR(s)/Ns * pinv(Wopt) * H * (Fopt * Fopt') * H' * Wopt)); 
                 end
             end
+
             
 
             fprintf('[%s] \t%04d: %5.2f\n', alg_name, reali, real(RM(alg_idx,snr_num,reali)));
@@ -184,8 +200,8 @@ end
 fs = 20;
 linewidth = 2;
 
-style = {'-.+','-d','-*','-o'};
-line_color = {[255, 128, 0], [76, 153, 0], [0, 0, 255], [255, 0, 0]};  
+style = {'-.+','-d','-*','-s','-o'};
+line_color = {[255, 128, 0], [76, 153, 0], [0, 0, 255], [0, 255, 255], [255, 0, 0]};  
 
 % generate legend string
 legend_str = cell(length(algorithms),1);

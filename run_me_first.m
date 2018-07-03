@@ -4,7 +4,7 @@ cd proposed/;
 addpath(genpath(pwd));
 cd ..;
 
-cd AltMinAlg/;
+cd benchmarks/;
 addpath(genpath(pwd));
 cd ..;
 

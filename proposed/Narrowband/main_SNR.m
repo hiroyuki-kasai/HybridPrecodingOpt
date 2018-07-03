@@ -10,7 +10,7 @@ clc
 
 % load('Ns=3.mat');
 Ns = 3;
-filestr = sprintf('../../Alternating-minimization-algorithms/datasets/Ns=%d.mat', Ns);
+filestr = sprintf('../../benchmarks/AltMinAlg/datasets/Ns=%d.mat', Ns);
 load(filestr);
 
 

@@ -3,7 +3,7 @@
 % implemented. 
 % Created by H.Kasai on July 01, 2018
 
-function [ FRF,FBB, stats ] = PE_AltMin_HK( Fopt, NRF, FRF_in )
+function [ FRF,FBB, stats ] = PE_AltMin_OFDM_HK( Fopt, NRF, FRF_in )
 
     [Nt, Ns, K] = size(Fopt);
     mynorm = [];

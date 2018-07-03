@@ -3,7 +3,7 @@
 % implemented. 
 % Created by H.Kasai on July 01, 2018
 
-function [ FRF, FBB, stats ] = OMP_HK(Fopt, NRF, At)
+function [ FRF, FBB, stats ] = OMP_OFDM_HK(Fopt, NRF, At)
     K = size(Fopt,3);
     FRF = [];
     Fres = Fopt;

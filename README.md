@@ -42,6 +42,10 @@ Algorithms
 - **PE-AltMin**
     - X. Yu, J.-C. Shen, J. Zhang, and K. B. Letaief, "[Alternating minimization algorithms for hybrid precoding in millimeter wave MIMO systems](https://ieeexplore.ieee.org/document/7397861/)," IEEE Journal on Selected Areas in Communications, vol. 10, no. 3, pp. 485-500, 2016.
 
+- **FPS-AltMin**
+    - X. Yu, J. Zhang, and K. B. Letaief, "[Hybrid Precoding in Millimeter Wave Systems: How Many Phase Shifters Are Needed?](https://ieeexplore.ieee.org/document/8254864/)," IEEE Global Communications Conference (Globecom), 2017.
+
+
 - **OMP-based**
     - O. E. Ayach, S. Rajagopal, S. Abu-Surra, Z. Pi, and R. W. Heath, "[Spatially sparse precoding in millimeter wave MIMO systems](https://ieeexplore.ieee.org/document/6717211/)," IEEE Transations on Wireless Communications, vol. 13, no. 3, pp. 1499-1513, 2014.
 
@@ -57,7 +61,7 @@ Folders and files
 ./demo.m                - Demonstration script. 
 ./comp_OFDM.m           - Simulation script for OFDM. 
 |proposed/              - Contains the files for the proposed algorithms.
-|AltMinAlg/             - Contains the files for the existing algorithms.
+|benchmarks/            - Contains the files for the existing algorithms.
 |cvx/                   - Folder for CVX project (Please downlod by yoursel!).
 </pre>
 
@@ -86,7 +90,7 @@ Just execute `demo` for the first demonstration of this package.
 Simulation for narrow band system
 ----------------------------
 
-Execute `channel_realization` in `AltMinAlg/datasets/` folder to generate datasets such as `Ns=3.mat'. The script outputs the datasete file in there. You can load this generated dataset file in the script. 
+Execute `channel_realization` in `benchmarks/AltMinAlg/datasets/` folder to generate datasets such as `Ns=3.mat'. The script outputs the datasete file in there. You can load this generated dataset file in the script. 
 
 <br />
 
@@ -121,7 +125,8 @@ More results for OFDM system
 
 Notes
 -------
-- Most of the codes of the package come from the codes in [AltMinAlg](https://github.com/yuxianghao/Alternating-minimization-algorithms-for-hybrid-precoding-in-millimeter-wave-MIMO-systems).  
+- Most of the codes of the package come from the codes in [AltMinAlg](https://github.com/yuxianghao/Alternating-minimization-algorithms-for-hybrid-precoding-in-millimeter-wave-MIMO-systems). 
+- FPS-AltMin is downloadable [here](http://www.ece.ust.hk/~eejzhang/document/GC17_codes.zip). 
 - The project uses the MATLAB toolbox [Manopt](https://www.manopt.org/).
 - [CVX package](http://cvxr.com/cvx/) is required for the narrrowband simulations. Please download the packege from [here](http://cvxr.com/cvx/download/) into `cvx` folder. 
 
@@ -136,4 +141,7 @@ If you have any problems or questions, please contact the author: [Hiroyuki Kasa
 
 Release Notes
 --------------
+* Version 1.0.0 (July 03, 2018)
+    - FPS-AltMin is added.
 * Version 1.0.0 (July 01, 2018)
+    - Initial version.

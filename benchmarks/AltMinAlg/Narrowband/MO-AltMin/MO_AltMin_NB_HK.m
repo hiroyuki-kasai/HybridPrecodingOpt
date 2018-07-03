@@ -1,7 +1,7 @@
-function [ FRF, FBB, stat ] = MO_AltMin( Fopt, NRF, FRF_in )
+function [ FRF, FBB, stat ] = MO_AltMin_NB_HK(Fopt, NRF, FRF_in)
 
 
-    [Nt, Ns, K] = size(Fopt);
+    [Nt, Ns] = size(Fopt);
     y = [];
     %FRF = exp( 1i*unifrnd(0,2*pi,Nt,NRF) );
     if FRF_in == 0
@@ -11,10 +11,10 @@ function [ FRF, FBB, stat ] = MO_AltMin( Fopt, NRF, FRF_in )
     end 
 
     init_cost = 0;
-    for k = 1:K      
-        FBB(:,:,k) = pinv(FRF) * Fopt(:,:,k); 
-        init_cost = init_cost + norm(Fopt(:,:,k) - FRF * FBB(:,:,k),'fro')^2;
-    end
+    
+    FBB(:,:) = pinv(FRF) * Fopt(:,:); 
+    init_cost = norm(Fopt(:,:) - FRF * FBB(:,:),'fro')^2;
+
      
     index = 1;
     cost(index) = init_cost;
@@ -28,10 +28,9 @@ function [ FRF, FBB, stat ] = MO_AltMin( Fopt, NRF, FRF_in )
         start_time = tic();
 
         y = [0,0];
-        for k = 1:K      
-            FBB(:,:,k) = pinv(FRF) * Fopt(:,:,k); 
-            y(1) = y(1) + norm(Fopt(:,:,k) - FRF * FBB(:,:,k),'fro')^2;
-        end        
+        FBB = pinv(FRF) * Fopt;
+        y(1) = norm(Fopt - FRF * FBB,'fro')^2;
+        [FRF, y(2)] = sig_manif(Fopt, FRF, FBB);      
         
         % measure elapsed time
         elapsed_time = toc(start_time);
