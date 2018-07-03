@@ -3,9 +3,9 @@
 
 Authors: [Hiroyuki Kasai](http://kasai.kasailab.com/)
 
-Last page update: July 02, 2018
+Last page update: July 03, 2018
 
-Latest version: 1.0.0 (see Release notes for more info)
+Latest version: 1.1.0 (see Release notes for more info)
 
 <br />
 
@@ -141,7 +141,7 @@ If you have any problems or questions, please contact the author: [Hiroyuki Kasa
 
 Release Notes
 --------------
-* Version 1.0.0 (July 03, 2018)
+* Version 1.1.0 (July 03, 2018)
     - FPS-AltMin is added.
 * Version 1.0.0 (July 01, 2018)
     - Initial version.
