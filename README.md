@@ -3,9 +3,9 @@
 
 Authors: [Hiroyuki Kasai](http://kasai.kasailab.com/)
 
-Last page update: July 03, 2018
+Last page update: November 29, 2018
 
-Latest version: 1.1.0 (see Release notes for more info) 
+Latest version: 1.1.1 (see Release notes for more info) 
 
 <br />
 
@@ -16,7 +16,7 @@ Hybrid [precoding](https://en.wikipedia.org/wiki/Precoding)(-[beamforming](https
 A maximization problem of spectral efficiency approximately boils down to a minimization problem of the Euclidean distance between the fully digital precoder and the hybrid precoder. This problem is further formulated as a [matrix factorization](https://it.wikipedia.org/wiki/Matrix_factorization) problem of he fully digital precoder with a product of the digital baseband precoder matrix and the analog radio frequency (RF) precoder (or beamforming) matrix. 
 The noteworthy point is that the phase shifters impose an additional element-wise unit modulus constraints on the analog RF precoder matrix. 
 
-This package provides the codes of the proposed optimization algorithms for hybrid precoding. This code includes existing state-of-the arts algorithms, too. Most of the codes of this package come from the [brilliant project](https://github.com/yuxianghao/Alternating-minimization-algorithms-for-hybrid-precoding-in-millimeter-wave-MIMO-systems).  
+This package provides the codes of the proposed optimization algorithms for hybrid precoding. This code includes existing state-of-the arts algorithms, too. Most of the codes of this package come from the [super brilliant project](https://github.com/yuxianghao/Alternating-minimization-algorithms-for-hybrid-precoding-in-millimeter-wave-MIMO-systems).  
 
 
 <br />
@@ -25,7 +25,7 @@ Document
 ----------
 The document can be found below;
 
-- H. Kasai, "Fast optimization algorithm on complex oblique manifold for hybrid precoding in Millimeter Wave MIMO systems," arXiv paper (coming soon!).
+- H. Kasai, "Fast optimization algorithm on complex oblique manifold for hybrid precoding in Millimeter Wave MIMO systems," GlobalSIP2018.
 
 <br />
 
@@ -141,6 +141,8 @@ If you have any problems or questions, please contact the author: [Hiroyuki Kasa
 
 Release Notes
 --------------
+* Version 1.1.1 (November 29, 2018)
+    - Opened to public.
 * Version 1.1.0 (July 03, 2018)
     - FPS-AltMin is added.
 * Version 1.0.0 (July 01, 2018)
