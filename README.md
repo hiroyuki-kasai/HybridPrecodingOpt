@@ -25,7 +25,7 @@ Document
 ----------
 The document can be found below;
 
-- H. Kasai, "Fast optimization algorithm on complex oblique manifold for hybrid precoding in Millimeter Wave MIMO systems," GlobalSIP2018.
+- H. Kasai, "Fast optimization algorithm on complex oblique manifold for hybrid precoding in Millimeter Wave MIMO systems," [GlobalSIP2018](https://ieeexplore.ieee.org/document/8646553), [pdf](https://github.com/hiroyuki-kasai/HybridPrecodingOpt/blob/master/201806_HybridPrecodingOpt.pdf).
 
 <br />
 
@@ -33,7 +33,7 @@ Algorithms
 ----------
 
 - **Proposed**
-    - H. Kasai, "Fast optimization algorithm on complex oblique manifold for hybrid precoding in Millimeter Wave MIMO systems," arXiv paper (coming soon!).
+    - H. Kasai, "Fast optimization algorithm on complex oblique manifold for hybrid precoding in Millimeter Wave MIMO systems," [GlobalSIP2018](https://ieeexplore.ieee.org/document/8646553), [pdf](https://github.com/hiroyuki-kasai/HybridPrecodingOpt/blob/master/201806_HybridPrecodingOpt.pdf).
 
 
 - **MO-AltMin**
