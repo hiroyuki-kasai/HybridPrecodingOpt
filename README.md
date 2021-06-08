@@ -135,12 +135,14 @@ Notes
 
 Problems or questions
 ---------------------
-If you have any problems or questions, please contact the author: [Hiroyuki Kasai](http://kasai.kasailab.com/) (email: kasai **at** is **dot** uec **dot** ac **dot** jp)
+If you have any problems or questions, please contact the author: [Hiroyuki Kasai](http://kasai.kasailab.com/) (email: hiroyuki **dot** kasai **at** waseda **dot** jp)
 
 <br />
 
 Release Notes
 --------------
+* Version 1.1.1 (June 09, 2021)
+    - Added the pdf file.
 * Version 1.1.1 (November 29, 2018)
     - Opened to public.
 * Version 1.1.0 (July 03, 2018)
