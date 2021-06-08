@@ -1,7 +1,7 @@
 # HybridPrecodingOpt : Optimization algorithms for hybrid precoding in millimeter wave (mmWave) MIMO systems
 ----------
 
-Authors: [Hiroyuki Kasai](http://kasai.kasailab.com/)
+Authors: [Hiroyuki Kasai](http://kasai.comm.waseda.ac.jp/kasai/)
 
 Last page update: November 29, 2018
 
