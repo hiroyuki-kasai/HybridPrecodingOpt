@@ -135,7 +135,7 @@ Notes
 
 Problems or questions
 ---------------------
-If you have any problems or questions, please contact the author: [Hiroyuki Kasai](http://kasai.kasailab.com/) (email: hiroyuki **dot** kasai **at** waseda **dot** jp)
+If you have any problems or questions, please contact the author: [Hiroyuki Kasai](http://kasai.comm.waseda.ac.jp/kasai/) (email: hiroyuki **dot** kasai **at** waseda **dot** jp)
 
 <br />
 
