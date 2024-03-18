@@ -53,11 +53,11 @@ for reali = 1:realization
     
     
     %% perform fast hybrid precoding algorithm
-    [FRFM, FBBM] = fast_hybrid_precoding_wrapper_OFDM( Fopt, NRF, 0 );
+    [FRFM, FBBM] = fast_hybrid_precoding_OFDM_wrapper( Fopt, NRF, 0 );
     for l = 1:L
         FBBM(:,:,l) = sqrt(Ns) * FBBM(:,:,l) / norm(FRFM * FBBM(:,:,l),'fro');
     end
-    [WRFM, WBBM] = fast_hybrid_precoding_wrapper_OFDM( Wopt, NRF, 0 );
+    [WRFM, WBBM] = fast_hybrid_precoding_OFDM_wrapper( Wopt, NRF, 0 );
 
     
     %% Calculate the spectral efficiency
